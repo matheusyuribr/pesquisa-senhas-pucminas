@@ -7,4 +7,4 @@ binding = "DB"
 database_name = "pesquisa-senhas-pucminas-db"
 # Cole aqui o database_id que aparece depois de rodar:
 # npx.cmd wrangler d1 create pesquisa-senhas-pucminas-db
-database_id = "COLE_AQUI_O_DATABASE_ID"
+database_id = "e1056a56-c9b4-4ca0-bfad-9c79af2f9e57"
