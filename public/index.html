@@ -81,7 +81,7 @@
   #toggle-visibility:disabled { cursor: not-allowed; opacity: .5; }
   .hint { font-size: 13px; color: var(--ink-soft); margin: 8px 0 0; }
 
-  .meter { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; margin: 4px 0 14px; }
+  .meter { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin: 4px 0 14px; }
   .meter span { height: 10px; border-radius: 999px; background: var(--empty); transition: background .25s; }
 
   .score-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
@@ -158,7 +158,6 @@
         </svg>
       </button>
     </div>
-    <p class="hint">Nada é analisado nem enviado enquanto você digita.</p>
     <button type="button" id="send-button" disabled>Ver meu resultado e enviar</button>
     <p class="send-status" id="send-status"></p>
   </section>
@@ -166,7 +165,7 @@
   <section class="card" id="result-card" aria-live="polite" hidden>
     <div id="result">
       <div class="meter" id="meter" aria-hidden="true">
-        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span>
       </div>
       <div class="score-head">
         <p class="score-label" id="score-label"></p>
@@ -303,7 +302,7 @@
   function render(payload) {
     const info = SCORE_INFO[payload.score];
     meterSegments.forEach((segment, index) => {
-      segment.style.background = index <= payload.score
+      segment.style.background = index < payload.score
         ? "var(" + SCORE_COLORS[payload.score] + ")"
         : "var(--empty)";
     });
