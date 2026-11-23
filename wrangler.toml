@@ -1,0 +1,10 @@
+name = "pesquisa-senhas-pucminas"
+pages_build_output_dir = "./public"
+compatibility_date = "2025-01-01"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "pesquisa-senhas-pucminas-db"
+# Cole aqui o database_id que aparece depois de rodar:
+# npx.cmd wrangler d1 create pesquisa-senhas-pucminas-db
+database_id = "COLE_AQUI_O_DATABASE_ID"

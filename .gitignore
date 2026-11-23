@@ -1,0 +1,11 @@
+# Dependências
+node_modules/
+.wrangler/
+
+# Dados da coleta: nunca vão para o repositório
+export*.json
+*.csv
+output/
+
+__pycache__/
+.venv/
