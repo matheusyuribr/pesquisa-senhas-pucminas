@@ -67,6 +67,7 @@ pesquisa-senhas-pucminas/
 │   ├── analyze_results.py    # análise estatística
 │   └── requirements.txt
 ├── schema.sql                # tabela do banco D1
+├── pesquisa.cmd              # atalhos: contar, limpar, exportar, analisar, publicar
 └── wrangler.toml             # configuração da Cloudflare
 ```
 
@@ -104,20 +105,17 @@ Acesse `http://localhost:8788`. Os envios vão para um banco local, separado do 
 
 ## 📊 Coleta e análise
 
-**Acompanhar o número de respostas:**
+Os comandos do dia a dia estão reunidos no [`pesquisa.cmd`](pesquisa.cmd) (Windows):
 
-```powershell
-npx.cmd wrangler d1 execute pesquisa-senhas-pucminas-db --remote --command "SELECT COUNT(*) AS total FROM responses"
-```
+| Comando | O que faz |
+|---|---|
+| `.\pesquisa contar` | Mostra quantas respostas já chegaram |
+| `.\pesquisa limpar` | Apaga **todas** as respostas (pede para digitar `APAGAR`) |
+| `.\pesquisa exportar` | Baixa as respostas para `export.json` e gera o `results.csv` |
+| `.\pesquisa analisar` | Roda a análise estatística |
+| `.\pesquisa publicar` | Publica a página e a API na Cloudflare |
 
-**Exportar e analisar ao final da coleta:**
-
-```powershell
-npx.cmd wrangler d1 execute pesquisa-senhas-pucminas-db --remote --json --command "SELECT * FROM responses ORDER BY id" > export.json
-pip install -r scripts/requirements.txt
-python scripts/export_results.py export.json
-python scripts/analyze_results.py
-```
+Antes da primeira análise, instale as dependências: `pip install -r scripts/requirements.txt`.
 
 A pasta `output/` recebe o relatório (`analysis_report.txt`), as tabelas em CSV, a tabela de frequência em LaTeX e o gráfico da distribuição dos *scores*. Os dados exportados não são versionados (veja o [`.gitignore`](.gitignore)).
 
