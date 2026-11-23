@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🔐 Pesquisa sobre Força de Senhas
+# Pesquisa sobre Força de Senhas
 
 **Instrumento de coleta do TCC _"Um estudo de caso sobre a força das senhas dos estudantes da PUC Minas Campus Contagem"_**
 
@@ -17,15 +17,15 @@ Bacharelado em Sistemas de Informação · PUC Minas Contagem
 
 ---
 
-## 📖 Sobre
+## Sobre
 
 Esta página avalia a força de uma senha com o estimador [zxcvbn](https://github.com/dropbox/zxcvbn), desenvolvido pelo Dropbox, **diretamente no navegador do participante**. A senha nunca é transmitida nem armazenada: apenas valores derivados, que não permitem reconstruí-la, são enviados para a pesquisa.
 
 O código é aberto justamente para que qualquer participante possa conferir isso.
 
-## 🛡️ Privacidade
+## Privacidade
 
-| ✅ Enviado à pesquisa | ❌ Nunca enviado nem armazenado |
+| Enviado à pesquisa | Nunca enviado nem armazenado |
 |---|---|
 | *Score* do zxcvbn (0 a 4) | A senha |
 | Log₁₀ do número estimado de tentativas | Nome, e-mail ou login |
@@ -41,18 +41,18 @@ Como isso é garantido:
 - **A API só aceita os campos acima.** [`functions/api/results.js`](functions/api/results.js) recusa qualquer campo extra ou valor fora do esperado, e não permite leitura dos dados.
 - **Um envio por acesso.** O resultado só é calculado no momento do envio, e o campo da senha é apagado em seguida.
 
-## 🧭 Como funciona
+## Como funciona
 
 ```mermaid
 flowchart LR
-    A["👤 Participante<br/>digita a senha"] --> B["🧮 zxcvbn<br/>no navegador"]
-    B --> C["📊 Valores derivados<br/>(sem a senha)"]
-    C -->|"POST /api/results"| D["⚙️ API<br/>Cloudflare Pages Functions"]
-    D -->|valida e grava| E[("🗄️ Banco D1")]
-    E -->|exportação| F["🐍 Análise em Python"]
+    A["Participante<br/>digita a senha"] --> B["zxcvbn<br/>no navegador"]
+    B --> C["Valores derivados<br/>(sem a senha)"]
+    C -->|"POST /api/results"| D["API<br/>Cloudflare Pages Functions"]
+    D -->|valida e grava| E[("Banco D1")]
+    E -->|exportação| F["Análise em Python"]
 ```
 
-## 📁 Estrutura
+## Estrutura
 
 ```
 pesquisa-senhas-pucminas/
@@ -71,7 +71,7 @@ pesquisa-senhas-pucminas/
 └── wrangler.toml             # configuração da Cloudflare
 ```
 
-## 🚀 Publicação
+## Publicação
 
 > Pré-requisitos: [Node.js LTS](https://nodejs.org/) e uma conta gratuita na [Cloudflare](https://dash.cloudflare.com/sign-up).
 > No PowerShell do Windows, use `npx.cmd` em vez de `npx`.
@@ -103,7 +103,7 @@ npx.cmd wrangler pages dev
 Acesse `http://localhost:8788`. Os envios vão para um banco local, separado do banco de produção.
 </details>
 
-## 📊 Coleta e análise
+## Coleta e análise
 
 Os comandos do dia a dia estão reunidos no [`pesquisa.cmd`](pesquisa.cmd) (Windows):
 
@@ -121,11 +121,11 @@ A pasta `output/` recebe o relatório (`analysis_report.txt`), as tabelas em CSV
 
 **Análise realizada:** distribuição de frequência, mediana, quartis e moda dos *scores*; proporções de senhas fracas e fortes com intervalo de confiança de 95% (Wilson); tempo estimado de quebra nos quatro cenários do zxcvbn; correlação de Spearman, teste U de Mann-Whitney e teste exato de Fisher, com tamanho de efeito.
 
-## 👥 Autoria
+## Autoria
 
 - **Matheus Yuri Benicio Rios**, autor · [@matheusyuribr](https://github.com/matheusyuribr)
 - **Prof. Paulo Henrique Rodrigues**, orientador
 
-## 📄 Licença
+## Licença
 
 Código sob a licença [MIT](LICENSE). O zxcvbn é © Dan Wheeler e Dropbox, Inc., também sob a licença MIT (veja [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md)).
